@@ -1,0 +1,37 @@
+SQL> CONN
+
+Enter user-name: SYSTEM
+
+Enter password: *****
+
+Connected.
+
+SQL> create user meraki identified by meraki;
+
+User created.
+
+SQL> grant dba to meraki;
+
+Grant succeeded.
+
+SQL> conn
+
+Enter user-name: meraki
+
+Enter password: ******
+
+SQL>create table admin(adminId number primary key,adminpass number not null check(length(adminpass
+
+)>4));
+SQL>create table users(usersid varchar(20) primary key,uPass varchar(20) not null,uName varchar(25) not null,uAddress varchar(100) not null,uPhone char(10) not null);
+
+SQL>create table productcategories(categoryID varchar(10) primary key,catName varchar(50) not null);
+
+SQL> create table products(pID char(12),pName varchar(100) not null ,pPrice float not null,pQuntity char(10) not null,pImage varchar(200) not null,pDiscription varchar(200),pCategoryid varchar(10)  
+foreign key references categoryID);
+
+
+SQL> create table event( eID number primary key ,eName varcar(20) not null,estartdate date not null,eEnddate date not null,eDiscription varchar(100));
+SQL>create table coupon(cID number primary key,cName varchar(50) not null,cDiscription varchar(200) not null,eID number,Discount number ,categoryId varchar(20)); 
+
+SQL> create table payment(payID number primary key,total amount number not null,discount numner not null,cID number,pID char(12));
